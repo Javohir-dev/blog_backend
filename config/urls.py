@@ -24,6 +24,7 @@ urlpatterns = [
     path("api/v1/", include("info.urls")),
     path("api/v1/", include("edu.urls")),
     path("api/v1/", include("blog.urls")),
+    path("api/v1/", include("projects.urls")),
     # Schema Swagger Ui
     path("swagger/", schema_view.with_ui("swagger", cache_timeout=0), name="swagger"),
 ]

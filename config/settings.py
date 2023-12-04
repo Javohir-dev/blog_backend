@@ -30,8 +30,8 @@ SECRET_KEY = os.getenv("SECRET_KEY", default="foo")
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = os.getenv("DEBUG") == "True"
 
-ALLOWED_HOSTS = os.getenv("ALLOWED_HOSTS", default=["*"]).split()
-
+# ALLOWED_HOSTS = os.getenv("ALLOWED_HOSTS", default=["*"]).split()
+ALLOWED_HOSTS = ["*"]
 
 # Application definition
 
@@ -53,6 +53,7 @@ CUSTOM_APPS = [
     "info",
     "edu",
     "blog",
+    "projects",
 ]
 
 INSTALLED_APPS += THIRD_PARTY_APPS + CUSTOM_APPS
