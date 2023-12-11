@@ -3,4 +3,5 @@ djangorestframework==3.13.0
 python-dotenv==1.0.0
 drf-yasg==1.21.7
 psycopg2
+psycopg2-binary
 pillow
