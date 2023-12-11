@@ -28,10 +28,10 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = os.getenv("SECRET_KEY", default="foo")
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = os.getenv("DEBUG") == "True"
+DEBUG = os.getenv("DEBUG")
 
 # ALLOWED_HOSTS = os.getenv("ALLOWED_HOSTS", default=["*"]).split()
-ALLOWED_HOSTS = ["*"]
+ALLOWED_HOSTS = [".vercel.app", ".now.sh", "0.0.0.0:8000", "localhost"]
 
 # Application definition
 
