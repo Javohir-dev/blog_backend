@@ -92,15 +92,29 @@ WSGI_APPLICATION = "config.wsgi.application"
 # Database
 # https://docs.djangoproject.com/en/4.0/ref/settings/#databases
 
-# Javohir -> local set-up
+# # Javohir -> local set-up
+# DATABASES = {
+#     "default": {
+#         "ENGINE": os.getenv("SQL_ENGINE", default="django.db.backends.postgresql"),
+#         "NAME": os.getenv("SQL_DATABASE", default=os.path.join("blog")),
+#         "USER": os.getenv("SQL_USERNAME", default="postgres"),
+#         "PASSWORD": os.getenv("SQL_PASSWORD", default="4422"),
+#         "HOST": os.getenv("SQL_HOST", default="localhost"),
+#         "PORT": os.getenv("SQL_PORT", default="5432"),
+#     }
+# }
+
+
 DATABASES = {
     "default": {
-        "ENGINE": os.getenv("SQL_ENGINE", default="django.db.backends.postgresql"),
-        "NAME": os.getenv("SQL_DATABASE", default=os.path.join("blog")),
-        "USER": os.getenv("SQL_USERNAME", default="postgres"),
-        "PASSWORD": os.getenv("SQL_PASSWORD", default="4422"),
-        "HOST": os.getenv("SQL_HOST", default="localhost"),
-        "PORT": os.getenv("SQL_PORT", default="5432"),
+        "ENGINE": os.environ.get("SQL_ENGINE", default="django.db.backends.sqlite3"),
+        "NAME": os.environ.get(
+            "SQL_DATABASE", default=os.path.join(BASE_DIR, "db.sqlite3")
+        ),
+        "USER": os.environ.get("SQL_USERNAME", default="postgres"),
+        "PASSWORD": os.environ.get("SQL_PASSWORD", default="password"),
+        "HOST": os.environ.get("SQL_HOST", default="db"),
+        "PORT": os.environ.get("SQL_PORT", default="5432"),
     }
 }
 
@@ -140,6 +154,7 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/4.0/howto/static-files/
 
 STATIC_URL = "/static/"
+STATIC_ROOT = os.path.join(BASE_DIR, "staticfiles")
 
 MEDIA_URL = "/media/"
 MEDIA_ROOT = BASE_DIR / "media/"
