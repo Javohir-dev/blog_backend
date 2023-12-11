@@ -33,7 +33,11 @@ SECRET_KEY = "django-insecure-y4xr-re@quuv^q+chrieuw#7v@qb-4s)e1%dw!=*rd!9p&cx8+
 DEBUG = True
 
 # ALLOWED_HOSTS = os.getenv("ALLOWED_HOSTS", default=["*"]).split()
-ALLOWED_HOSTS = [".vercel.app", ".now.sh", "0.0.0.0:8000", "localhost"]
+# ALLOWED_HOSTS = [".vercel.app", ".now.sh", "0.0.0.0:8000", "localhost"]
+
+ALLOWED_HOSTS = ["*"]
+
+CSRF_TRUSTED_ORIGINS = ["https://*.tpm.house", "https://*.127.0.0.1"]
 
 # Application definition
 
@@ -166,3 +170,7 @@ MEDIA_ROOT = BASE_DIR / "media/"
 # https://docs.djangoproject.com/en/4.0/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
+
+DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
+# vercel_app/settings.py
+WSGI_APPLICATION = "vercel_app.wsgi.app"
