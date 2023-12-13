@@ -2,10 +2,15 @@ from django.shortcuts import render
 
 from rest_framework.viewsets import ModelViewSet
 from rest_framework.generics import ListAPIView
+from rest_framework.views import APIView
 from rest_framework.response import Response
 
-from projects.serializers import ProjectsSerializer, ProjectsListSerializer
-from projects.models import Projects
+from projects.serializers import (
+    ProjectsSerializer,
+    ProjectsListSerializer,
+    CategorySerializer,
+)
+from projects.models import Projects, Category
 
 
 class ProjectsModelViewSet(ModelViewSet):
@@ -17,8 +22,10 @@ class ProjectsModelViewSet(ModelViewSet):
             return ProjectsListSerializer
         return self.serializer_class
 
+
 class PostsByCategory(ListAPIView):
-    serializer_class = ProjectsSerializer
+    # queryset = Projects.objects.all()
+    serializer_class = ProjectsListSerializer
 
     def get_queryset(self):
         category_id = self.kwargs.get("category_id")
@@ -35,3 +42,8 @@ class PostsByCategory(ListAPIView):
 
         serializer = self.get_serializer(queryset, many=True)
         return Response(serializer.data)
+
+
+class CategoryModelViewSet(ModelViewSet):
+    queryset = Category.objects.all()
+    serializer_class = CategorySerializer
