@@ -103,7 +103,6 @@ MIDDLEWARE = [
     "django.contrib.messages.middleware.MessageMiddleware",
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
     "corsheaders.middleware.CorsMiddleware",
-    "django.middleware.common.CommonMiddleware",
 ]
 
 ROOT_URLCONF = "config.urls"
@@ -141,7 +140,7 @@ WSGI_APPLICATION = "config.wsgi.application"
 #         "PORT": os.getenv("SQL_PORT", default="5432"),
 #     }
 # }
-
+#
 
 DATABASES = {
     "default": {
